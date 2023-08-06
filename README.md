@@ -40,25 +40,25 @@ Please refer to the AirBnB concept page for more details on the supported object
 
 ### Interactive Mode
 
-`$ ./console.py`
-(hbnb) help
+    $ ./console.py
+    (hbnb) help
 
 Documented commands (type help <topic>):
 ========================================
-EOF  help  quit
-(hbnb)
-(hbnb) quit
-$` 
+    EOF  help  quit
+    (hbnb)
+    (hbnb) quit
+    $
 
 ### Non-Interactive Mode
 
-`$ echo "help" | ./console.py
-(hbnb)
+    $ echo "help" | ./console.py
+    (hbnb)
 
 Documented commands (type help <topic>):
 ========================================
-EOF  help  quit
-(hbnb)` 
+    EOF  help  quit
+    (hbnb)
 
 ## Running Tests
 
@@ -82,3 +82,6 @@ To ensure the proper functionality of the console, run the unit tests using the 
 -   [Soumia Ouzat](https://github.com/SouaOui)
 -   [Mounssif Bouhlaoui](https://github.com/nuuxcode)
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://chat.openai.com/LICENSE) file for details.
