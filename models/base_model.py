@@ -3,10 +3,12 @@ from uuid import uuid4
 from datetime import datetime
 
 class BaseModel():
-    """Define a BaseModel Class"""
-    id = str(uuid4())
-    created_at = datetime.now()
-    updated_at = datetime.now()
+
+    def __init__(self):
+        """Define a BaseModel Class"""
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
     
     def __str__(self) -> str:
         """Returns the string representation of an instance"""
@@ -18,5 +20,8 @@ class BaseModel():
     
     def to_dict(self):
         """returns the dictionary representation of the instance"""
-        dict_
-        return self.__dict__
+        todict = self.__dict__
+        todict["__class__"] = self.__class__.__name__
+        todict["created_at"] = todict["created_at"].isoformat()
+        todict["updated_at"] = todict["updated_at"].isoformat()
+        return todict
