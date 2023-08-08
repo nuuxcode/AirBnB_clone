@@ -1,23 +1,12 @@
 #!/usr/bin/python3
-"""
-class BaseModel that defines all common
-attributes/methods for other classes
-take care of the initialization, serialization and
-deserialization of your future instances
-"""
 from uuid import uuid4
 from datetime import datetime
-from models import storage
 
 
-class BaseModel:
-    """
-    class BaseModel that defines all common
-    attributes/methods for other classes
-    """
+class BaseModel():
 
     def __init__(self, *args, **kwargs):
-        """Initialization of BaseModel Class"""
+        """Define a BaseModel Class"""
         if len(kwargs) == 0:
             self.id = str(uuid4())
             self.created_at = datetime.now()
@@ -25,8 +14,7 @@ class BaseModel:
         else:
             for key, value in kwargs.items():
                 if key in ["created_at", "updated_at"]:
-                    setattr(self, key, datetime.strptime(
-                        value, "%Y-%m-%dT%H:%M:%S.%f"))
+                    setattr(self, key, datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
                     continue
                 if key != "__class__":
                     setattr(self, key, value)
