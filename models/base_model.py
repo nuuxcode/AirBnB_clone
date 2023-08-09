@@ -16,33 +16,39 @@ class BaseModel:
     attributes/methods for other classes
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         """Initialization of BaseModel Class"""
-        if len(kwargs) == 0:
-            self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-        else:
+        #if len(kwargs) == 0:
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+        #else:
+        if kwargs:
             for key, value in kwargs.items():
-                if key in ["created_at", "updated_at"]:
+                if key in ["created_at", "updated_at"]: #TODO:mandatory atribut
                     setattr(self, key, datetime.strptime(
                         value, "%Y-%m-%dT%H:%M:%S.%f"))
-                    continue
-                if key != "__class__":
+                elif key != "__class__":
                     setattr(self, key, value)
-
+        else:
+            storage.new(self)
+        
     def __str__(self) -> str:
         """Returns the string representation of an instance"""
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
-    def save(self):
+    def save(self) -> None:
         """update the public instance updated_at"""
         self.updated_at = datetime.now()
+        storage.save() #TODO:updated_att will not be saved
+        
 
-    def to_dict(self):
+    def to_dict(self) -> dict:
         """returns the dictionary representation of the instance"""
-        todict = self.__dict__
+        todict = dict(self.__dict__)
         todict["__class__"] = self.__class__.__name__
-        todict["created_at"] = todict["created_at"].isoformat()
-        todict["updated_at"] = todict["updated_at"].isoformat()
+        if not isinstance(todict["created_at"], str):
+            todict["created_at"] = todict["created_at"].isoformat()
+        if not isinstance(todict["updated_at"], str):
+            todict["updated_at"] = todict["updated_at"].isoformat()
         return todict

@@ -14,7 +14,3 @@ my_model.name = "My_First_Model"
 my_model.my_number = 89
 my_model.save()
 print(my_model)
-{'id': '1', 'user': "nuux"}
-{'id': '2', 'user': "nuux2"}
-{'id': '3', 'user': "nuux3"}
-
