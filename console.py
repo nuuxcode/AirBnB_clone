@@ -1,6 +1,11 @@
 import cmd
 from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity 
+from models.review import Review
 from models import storage
 import re
 
@@ -23,6 +28,16 @@ class HBNBCommand(cmd.Cmd):
                 new = BaseModel()
             if "User" in arg:
                 new = User()
+            if "Place" in arg:
+                new = Place()
+            if "State" in arg:
+                new = State()
+            if "City" in arg:
+                new = City()
+            if "Amenity" in arg:
+                new = Amenity()
+            if "Review" in arg:
+                new = Review()
             storage.save()
             print(new.id)
 

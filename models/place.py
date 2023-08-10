@@ -15,6 +15,6 @@ class Place(BaseModel):
     longitude = 0.0
     amenity_ids = []
 
-    def __init__(self, city_id, user_id):
+"""    def __init__(self, city_id, user_id):
         Place.city_id = city_id
-        Place.user_id = user_id
+        Place.user_id = user_id"""

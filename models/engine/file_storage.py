@@ -3,6 +3,11 @@ import json
 import os
 from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity 
+from models.review import Review
 #from models.base_model import BaseModel #avoid circular
 
 class FileStorage:
@@ -38,3 +43,13 @@ class FileStorage:
                         data[key] = BaseModel(**value)
                     if "User" in key:
                         data[key] = User(**value)
+                    if "Place" in key:
+                        data[key] = Place(**value)
+                    if "State" in key:
+                        data[key] = State(**value)
+                    if "City" in key:
+                        data[key] = City(**value)
+                    if "Amenity" in key:
+                        data[key] = Amenity(**value)
+                    if "Review" in key:
+                        data[key] = Review(**value)
