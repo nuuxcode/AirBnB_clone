@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import json
 import os
-
+#from models.base_model import BaseModel #avoid circular
 
 class FileStorage:
     """ doc """
@@ -20,7 +20,7 @@ class FileStorage:
 
     def save(self):
         filepath = FileStorage.__file_path
-        data = FileStorage.__objects
+        data = dict(FileStorage.__objects)
         for key, value in data.items():
             data[key] = value.to_dict()
         with open(filepath, 'w') as f:
