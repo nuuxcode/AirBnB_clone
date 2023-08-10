@@ -7,7 +7,7 @@ deserialization of your future instances
 """
 from uuid import uuid4
 from datetime import datetime
-from models import storage
+import models
 
 
 class BaseModel:
@@ -31,7 +31,7 @@ class BaseModel:
                 elif key != "__class__":
                     setattr(self, key, value)
         else:
-            storage.new(self)
+            models.storage.new(self)
         
     def __str__(self) -> str:
         """Returns the string representation of an instance"""
@@ -40,7 +40,7 @@ class BaseModel:
     def save(self) -> None:
         """update the public instance updated_at"""
         self.updated_at = datetime.now()
-        storage.save() #TODO:updated_att will not be saved
+        models.storage.save() #TODO:updated_att will not be saved
         
 
     def to_dict(self) -> dict:

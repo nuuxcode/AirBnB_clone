@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import json
 import os
+from models.base_model import BaseModel
+from models.user import User
 #from models.base_model import BaseModel #avoid circular
 
 class FileStorage:
@@ -27,10 +29,12 @@ class FileStorage:
             json.dump(data, f)
         
     def reload(self):
-        from ..base_model import BaseModel
         filepath = FileStorage.__file_path
         data = FileStorage.__objects
         if os.path.exists(filepath):
             with open(filepath) as f:
                 for key, value in json.load(f).items():
-                    data[key] = BaseModel(**value)
+                    if "BaseModel" in key:
+                        data[key] = BaseModel(**value)
+                    if "User" in key:
+                        data[key] = User(**value)

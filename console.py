@@ -1,5 +1,6 @@
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 import re
 
@@ -15,10 +16,13 @@ class HBNBCommand(cmd.Cmd):
     attr_int = ["number_rooms", "number_bathrooms",
                 "max_guest", "price_by_night"]
     attr_float = ["latitude", "longitude"]
-
+#
     def do_create(self, arg):
         if self.valid(arg):
-            new = BaseModel()
+            if "BaseModel" in arg:
+                new = BaseModel()
+            if "User" in arg:
+                new = User()
             storage.save()
             print(new.id)
 
@@ -64,12 +68,12 @@ class HBNBCommand(cmd.Cmd):
         _len = len(args)
         my_list = []
         if _len >= 1:
+            if args[0] not in HBNBCommand.all_class:
+                print("** class doesn't exist **")
+                return
             for key, value in storage.all().items():
                 if args[0] in key:
                     my_list.append(str(value))
-                else:
-                    print("** class doesn't exist **")
-                    return
         else:
             for key, value in storage.all().items():
                 my_list.append(str(value))
