@@ -108,6 +108,7 @@ class HBNBCommand(cmd.Cmd):
                 setattr(storage.all()[_key], args[2], float(match))
             else:
                 setattr(storage.all()[_key], args[2], match)
+            storage.save()
 
     def do_EOF(self, line):
         """Ctrl-D to exit the program\n"""
