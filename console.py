@@ -74,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
         if _id_flag and args[0]+"."+args[1] not in storage.all():
             print("** no instance found **")
             return False
-        if len == 2 and _att_flag:
+        if _len == 2 and _att_flag:
             print("** attribute name missing **")
             return False
         if _len == 3 and _att_flag:
