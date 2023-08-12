@@ -19,8 +19,9 @@ class HBNBCommand(cmd.Cmd):
     all_class = ["BaseModel", "User", "State",
                  "City", "Amenity", "Place", "Review"]
 
-    attr_str = ["name", "amenity_id", "place_id", "state_id", "user_id", "city_id",
-                "description", "text", "email", "password", "first_name", "last_name"]
+    attr_str = ["name", "amenity_id", "place_id", "state_id",
+                "user_id", "city_id", "description", "text",
+                "email", "password", "first_name", "last_name"]
     attr_int = ["number_rooms", "number_bathrooms",
                 "max_guest", "price_by_night"]
     attr_float = ["latitude", "longitude"]
@@ -96,7 +97,9 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, arg):
-        """Prints all string representation of all instances based or not on the class name\n"""
+        """ Prints all string representation of all
+        instances based or not on the class name\n
+        """
         args = arg.split()
         _len = len(args)
         my_list = []
@@ -123,7 +126,9 @@ class HBNBCommand(cmd.Cmd):
         return arg
 
     def do_update(self, arg):
-        """Updates an instance based on the class name and id by adding or updating attribute\n"""
+        """Updates an instance based on
+        the class name and id by adding
+        or updating attribute\n"""
         if self.valid(arg, True, True):
             args = arg.split()
             _key = args[0]+"."+args[1]

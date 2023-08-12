@@ -43,7 +43,7 @@ class BaseModelTestCase(unittest.TestCase):
         self.assertTrue(hasattr(new, "updated_at"))
 
         """type test"""
-        self.assertIsInstance(new.id, str) #TODO:check if uuid
+        self.assertIsInstance(new.id, str)
         self.assertIsInstance(new.created_at, datetime)
         self.assertIsInstance(new.updated_at, datetime)
 
@@ -66,9 +66,8 @@ class BaseModelTestCase(unittest.TestCase):
         old_time = new.updated_at
         new.save()
         self.assertNotEqual(old_time, new.updated_at)
-        # TODO:check if new time is bigger than old time
-        self.assertGreater(new.updated_at,old_time)
-        
+        self.assertGreater(new.updated_at, old_time)
+
         """ check if init it call: models.storage.save() """
         with patch('models.storage.save') as mock_function:
             obj = BaseModel()

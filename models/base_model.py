@@ -18,33 +18,32 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs) -> None:
         """Initialization of BaseModel Class"""
-        #if len(kwargs) == 0:
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-        #else:
         if kwargs:
             for key, value in kwargs.items():
-                if key in ["created_at", "updated_at"]: #TODO:mandatory atribut
+                if key in ["created_at", "updated_at"]:
                     setattr(self, key, datetime.strptime(
                         value, "%Y-%m-%dT%H:%M:%S.%f"))
                 elif key != "__class__":
                     setattr(self, key, value)
         else:
             models.storage.new(self)
-        
+
     def __str__(self) -> str:
         """Returns the string representation of an instance"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(
+            self.__class__.__name__, self.id, self.__dict__)
 
     def save(self) -> None:
         """update the public instance updated_at"""
         self.updated_at = datetime.now()
-        models.storage.save() #TODO:updated_att will not be saved
-        
+        models.storage.save()
 
     def to_dict(self) -> dict:
-        """returns the dictionary representation of the instance"""
+        """returns the dictionary
+        representation of the instance"""
         todict = dict(self.__dict__)
         todict["__class__"] = self.__class__.__name__
         if not isinstance(todict["created_at"], str):
