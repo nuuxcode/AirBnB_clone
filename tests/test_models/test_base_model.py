@@ -84,10 +84,17 @@ class BaseModelTestCase(unittest.TestCase):
     def test_basemodel_init2(self):
        
         new = BaseModel()
+        new.name = "John"
+        new.my_number = 89
         new2 = BaseModel(**new.to_dict())
         self.assertEqual(new.id, new2.id)
+        self.assertEqual(new.name, "John")
+        self.assertEqual(new.my_number, 89)
 
-        ############################
+    def test_basemodel_init3(self):
+        new = BaseModel()
+        new2 = BaseModel(new.to_dict())
+        self.assertNotEqual(new, new2)
 
 
 if __name__ == '__main__':
