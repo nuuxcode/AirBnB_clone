@@ -1,30 +1,28 @@
 #!/usr/bin/python3
-""" unit test for bases """
+""" unit test for City """
 import unittest
-from models.base_model import BaseModel
+from models.city import City
+from datetime import datetime
 
 
-class BaseTestCase(unittest.TestCase):
-    """ class for base test """
-    def setUp(self):
-        """
-        Resets id
-        """
-        Base._Base__nb_objects = 0
+class CityTestCase(unittest.TestCase):
+    """ class for city test """
 
-    def test_base_task1(self):
-        b1 = Base()
-        self.assertEqual(b1.id, 1)
+    def test_city(self):
+        """existince"""
+        new = City()
+        self.assertTrue(hasattr(new, "id"))
+        self.assertTrue(hasattr(new, "created_at"))
+        self.assertTrue(hasattr(new, "updated_at"))
+        self.assertTrue(hasattr(new, "state_id"))
+        self.assertTrue(hasattr(new, "name"))
 
-        b2 = Base()
-        b3 = Base()
-        self.assertEqual(b2.id, 2)
-        self.assertEqual(b3.id, 3)
-
-        b4 = Base(12)
-        b5 = Base()
-        self.assertEqual(b4.id, 12)
-        self.assertEqual(b5.id, 4)
+        """type test"""
+        self.assertIsInstance(new.id, str)
+        self.assertIsInstance(new.created_at, datetime)
+        self.assertIsInstance(new.updated_at, datetime)
+        self.assertIsInstance(new.state_id, str)
+        self.assertIsInstance(new.name, str)
 
 
 if __name__ == '__main__':

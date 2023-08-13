@@ -1,30 +1,46 @@
 #!/usr/bin/python3
-""" unit test for bases """
+""" unit test for Review """
 import unittest
-from models.base_model import BaseModel
+from models.place import Place
+from datetime import datetime
 
 
-class BaseTestCase(unittest.TestCase):
-    """ class for base test """
-    def setUp(self):
-        """
-        Resets id
-        """
-        Base._Base__nb_objects = 0
+class PlaceTestCase(unittest.TestCase):
+    """ class for place test """
 
-    def test_base_task1(self):
-        b1 = Base()
-        self.assertEqual(b1.id, 1)
+    def test_place(self):
+        """existince"""
+        new = Place()
+        self.assertTrue(hasattr(new, "id"))
+        self.assertTrue(hasattr(new, "created_at"))
+        self.assertTrue(hasattr(new, "updated_at"))
+        self.assertTrue(hasattr(new, "city_id"))
+        self.assertTrue(hasattr(new, "user_id"))
+        self.assertTrue(hasattr(new, "name"))
+        self.assertTrue(hasattr(new, "description"))
+        self.assertTrue(hasattr(new, "number_rooms"))
+        self.assertTrue(hasattr(new, "number_bathrooms"))
+        self.assertTrue(hasattr(new, "max_guest"))
+        self.assertTrue(hasattr(new, "price_by_night"))
+        self.assertTrue(hasattr(new, "latitude"))
+        self.assertTrue(hasattr(new, "longitude"))
+        self.assertTrue(hasattr(new, "amenity_ids"))
 
-        b2 = Base()
-        b3 = Base()
-        self.assertEqual(b2.id, 2)
-        self.assertEqual(b3.id, 3)
-
-        b4 = Base(12)
-        b5 = Base()
-        self.assertEqual(b4.id, 12)
-        self.assertEqual(b5.id, 4)
+        """type test"""
+        self.assertIsInstance(new.id, str)
+        self.assertIsInstance(new.created_at, datetime)
+        self.assertIsInstance(new.updated_at, datetime)
+        self.assertIsInstance(new.city_id, str)
+        self.assertIsInstance(new.user_id, str)
+        self.assertIsInstance(new.name, str)
+        self.assertIsInstance(new.description, str)
+        self.assertIsInstance(new.number_rooms, int)
+        self.assertIsInstance(new.number_bathrooms, int)
+        self.assertIsInstance(new.max_guest, int)
+        self.assertIsInstance(new.price_by_night, int)
+        self.assertIsInstance(new.latitude, float)
+        self.assertIsInstance(new.longitude, float)
+        self.assertIsInstance(new.amenity_ids, list)
 
 
 if __name__ == '__main__':
