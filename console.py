@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Doc Here """
+""" Console module for AirBnB """
 import cmd
 from models.base_model import BaseModel
 from models.user import User
@@ -14,7 +14,7 @@ import json
 
 
 class HBNBCommand(cmd.Cmd):
-    """DOC DOC"""
+    """Class for the console AirBnB"""
     prompt = "(hbnb) "
 
     all_class = ["BaseModel", "User", "State",
@@ -40,7 +40,8 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        """DOC DOC"""
+        """Creates a new instance :
+Usage: create <class name>\n"""
         classes = {
             "BaseModel": BaseModel,
             "User": User,
@@ -58,13 +59,14 @@ class HBNBCommand(cmd.Cmd):
             print(new.id)
 
     def do_clear(self, arg):
-        """DOC DOC"""
+        """Clear data storage :
+Usage: clear\n"""
         storage.all().clear()
         self.do_all(arg)
         print("** All data been clear! **")
 
     def valid(self, arg, _id_flag=False, _att_flag=False):
-        """DOC DOC"""
+        """validation of argument that pass to commands"""
         args = arg.split()
         _len = len(arg.split())
         if _len == 0:
@@ -88,14 +90,16 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_show(self, arg):
-        """DOC DOC"""
+        """Prints the string representation of an instance
+Usage: show <class name> <id>\n"""
         if self.valid(arg, True):
             args = arg.split()
             _key = args[0]+"."+args[1]
             print(storage.all()[_key])
 
     def do_destroy(self, arg):
-        """DOC DOC"""
+        """Deletes an instance
+Usage: destroy <class name> <id>\n"""
         if self.valid(arg, True):
             args = arg.split()
             _key = args[0]+"."+args[1]
@@ -103,9 +107,10 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, arg):
-        """ Prints all string representation of all
-        instances based or not on the class name\n
-        """
+        """Prints all string representation of all
+instances based or not on the class name
+Usage1: all
+Usage2: all <class name>\n"""
         args = arg.split()
         _len = len(args)
         my_list = []
@@ -122,7 +127,7 @@ class HBNBCommand(cmd.Cmd):
         print(my_list)
 
     def casting(self, arg):
-        """DOC DOC"""
+        """cast string to float or int if possible"""
         try:
             if "." in arg:
                 arg = float(arg)
@@ -133,9 +138,8 @@ class HBNBCommand(cmd.Cmd):
         return arg
 
     def do_update(self, arg):
-        """Updates an instance based on
-        the class name and id by adding
-        or updating attribute\n"""
+        """Updates an instance by adding or updating attribute
+Usage: update <class name> <id> <attribute name> \"<attribute value>\"\n"""
         if self.valid(arg, True, True):
             args = arg.split()
             _key = args[0]+"."+args[1]
@@ -156,7 +160,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def count(self, arg):
-        """DOC DOC"""
+        """the number of instances of a class
+Usage: <class name>.count()\n"""
         count = 0
         for key in storage.all():
             if arg[:-1] in key:
@@ -164,7 +169,7 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def _exec(self, arg):
-        """DOC DOC"""
+        """helper function parsing filtring replacing"""
         methods = {
             "all": self.do_all,
             "count": self.count,
@@ -184,7 +189,7 @@ class HBNBCommand(cmd.Cmd):
             methods[match[0][1]](args)
 
     def default(self, arg):
-        """DOC DOC"""
+        """default if there no command found"""
         match = re.findall(r"^(\w+)\.(\w+)\((.*)\)", arg)
         if len(match) != 0 and match[0][1] == "update" and "{" in arg:
             _dict = re.search(r'{([^}]+)}', arg).group()
