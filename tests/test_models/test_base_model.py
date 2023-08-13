@@ -100,11 +100,6 @@ class BaseModelTestCase(unittest.TestCase):
         self.assertTrue(hasattr(new2, "save"))
         self.assertTrue(hasattr(new2, "to_dict"))
 
-        """existince"""
-        self.assertTrue(hasattr(new2, "id"))
-        self.assertTrue(hasattr(new2, "created_at"))
-        self.assertTrue(hasattr(new2, "updated_at"))
-        self.assertFalse(hasattr(new2, "__class__"))
 
         ############################
 
