@@ -90,8 +90,66 @@ $
 
 ## ``4-Usage``
 
+* Start the console in interactive mode:
 
+```bash
+$ ./console.py
+(hbnb)
+```
 
+* Use help to see the available commands:
+
+```bash
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  all  count  create  destroy  help  quit  show  update
+
+(hbnb)
+```
+
+* Quit the console:
+
+```bash
+(hbnb) quit
+$
+```
+
+* create
+
+```bash
+(hbnb) create BaseModel
+57262839-51d7-4a9a-93e2-35ed8e91d823
+$
+```
+
+* show 
+```bash
+(hbnb) show BaseModel 57262839-51d7-4a9a-93e2-35ed8e91d823
+[BaseModel] (57262839-51d7-4a9a-93e2-35ed8e91d823) {'id': '57262839-51d7-4a9a-93e2-35ed8e91d823', 'created_at': datetime.datetime(2023, 8, 13, 14, 19, 19, 412265), 'updated_at': datetime.datetime(2023, 8, 13, 14, 19, 19, 412357)}
+(hbnb)
+(hbhb)
+```
+
+* all
+```bash
+(hbnb) all
+[BaseModel] (57262839-51d7-4a9a-93e2-35ed8e91d823) {'id': '57262839-51d7-4a9a-93e2-35ed8e91d823', 'created_at': datetime.datetime(2023, 8, 13, 14, 19, 19, 412265), 'updated_at': datetime.datetime(2023, 8, 13, 14, 19, 19, 412357)}
+(hbnb) all BaseModel
+[BaseModel] (57262839-51d7-4a9a-93e2-35ed8e91d823) {'id': '57262839-51d7-4a9a-93e2-35ed8e91d823', 'created_at': datetime.datetime(2023, 8, 13, 14, 19, 19, 412265), 'updated_at': datetime.datetime(2023, 8, 13, 14, 19, 19, 412357)}
+```
+* destroy
+
+```bash
+(hbnb) destroy
+** class name missing **
+(hbnb) destroy BaseModel
+** instance id missing **
+(hbnb) destroy BaseModel 57262839-51d7-4a9a-93e2-35ed8e91d823
+(hbnb) all
+[]
+```
 ## ``5-Testing``
 
 ## ``6-Authors``
