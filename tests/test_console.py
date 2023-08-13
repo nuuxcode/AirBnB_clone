@@ -33,7 +33,6 @@ class ConsoleTestCase(unittest.TestCase):
 
         """ERROR """
         """ class name missing """
-        print("----------------------------")
         for cmd in cmd_classname:
             # print(f"class name missing : {cmd}")
             with patch('sys.stdout', new=StringIO()) as f:
@@ -42,7 +41,6 @@ class ConsoleTestCase(unittest.TestCase):
                 self.assertCountEqual(expected, f.getvalue().strip())
 
         """ class doesn't exist """
-        print("----------------------------")
         class_dont_exist = ["create x", "update x",
                             "show x", "destroy x", "all x"]
         for cmd in class_dont_exist:
@@ -53,7 +51,6 @@ class ConsoleTestCase(unittest.TestCase):
                 self.assertCountEqual(expected, f.getvalue().strip())
 
         """ instance id missing """
-        print("----------------------------")
         cmds = ["update", "show", "destroy"]
         all_class = HBNBCommand().all_class
         for cmd in cmds:
@@ -65,7 +62,6 @@ class ConsoleTestCase(unittest.TestCase):
                     self.assertCountEqual(expected, f.getvalue().strip())
 
         """ no instance found """
-        print("----------------------------")
         cmds = ["update", "show", "destroy"]
         all_class = HBNBCommand().all_class
         wrong_id = "x"
@@ -78,7 +74,6 @@ class ConsoleTestCase(unittest.TestCase):
                     self.assertCountEqual(expected, f.getvalue().strip())
 
         """ name missing """
-        print("----------------------------")
         new_BaseModel = BaseModel()
         new_User = User()
         new_State = State()
@@ -108,7 +103,6 @@ class ConsoleTestCase(unittest.TestCase):
                     self.assertCountEqual(expected, f.getvalue().strip())
 
         """ value missing """
-        print("----------------------------")
         new_BaseModel = BaseModel()
         new_User = User()
         new_State = State()
