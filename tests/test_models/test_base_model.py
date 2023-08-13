@@ -97,7 +97,7 @@ class BaseModelTestCase(unittest.TestCase):
  
         """existince"""
       
-        self.assertFalse(hasattr(new2, "__class__"))
+        self.assertTrue(hasattr(new2, "__class__"))
 
         ############################
 
