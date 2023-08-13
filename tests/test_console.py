@@ -6,7 +6,10 @@ from console import HBNBCommand
 
 
 class ConsoleTestCase(unittest.TestCase):
+    """DOC DOC"""
+
     def test_error(self):
+        """DOC DOC"""
         print("")
         cmd_classname = ["create", "update", "show", "destroy"]
         cmd_id = ["update", "show", "destroy"]

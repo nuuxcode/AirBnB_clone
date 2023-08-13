@@ -16,17 +16,19 @@ class BaseModelTestCase(unittest.TestCase):
     """ class for base test """
 
     def setUp(self):
-        # Open and truncate the file to make it empty
+        """ class for base test """
         self.filepath = models.storage._FileStorage__file_path
         with open(self.filepath, 'w') as file:
             file.truncate(0)
         models.storage.all().clear()
 
     def tearDown(self):
+        """ class for base test """
         printed_output = captured_output.getvalue()
         sys.stdout = sys.__stdout__
 
     def test_basemodel_init(self):
+        """ class for base test """
         new = BaseModel()
 
         """ check if it have methods """
@@ -82,6 +84,7 @@ class BaseModelTestCase(unittest.TestCase):
         self.assertEqual(saved_data[keyname], new.to_dict())
 
     def test_basemodel_init2(self):
+        """ class for base test """
        
         new = BaseModel()
         new.name = "John"
@@ -92,6 +95,7 @@ class BaseModelTestCase(unittest.TestCase):
         self.assertEqual(new.my_number, 89)
 
     def test_basemodel_init3(self):
+        """ DOC DOC DOC """
         new = BaseModel()
         new2 = BaseModel(new.to_dict())
         self.assertNotEqual(new, new2)

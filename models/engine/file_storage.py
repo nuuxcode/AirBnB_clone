@@ -13,24 +13,24 @@ from models.review import Review
 
 
 class FileStorage:
-    """ doc """
+    """ doc doc """
 
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """ doc """
+        """ doc doc """
         return FileStorage.__objects
 
     def new(self, obj):
-        """ doc """
+        """ doc doc """
         id = obj.to_dict()["id"]
         className = obj.to_dict()["__class__"]
         keyName = className+"."+id
         FileStorage.__objects[keyName] = obj
 
     def save(self):
-        """ doc """
+        """ doc doc """
         filepath = FileStorage.__file_path
         data = dict(FileStorage.__objects)
         for key, value in data.items():
@@ -39,7 +39,7 @@ class FileStorage:
             json.dump(data, f)
 
     def reload(self):
-        """ doc """
+        """ doc doc """
         filepath = FileStorage.__file_path
         data = FileStorage.__objects
         if os.path.exists(filepath):
