@@ -1,23 +1,44 @@
+# 0x00. AirBnB clone - The console
 
-# AirBnB Clone Console
+## Contents:
+
+* [1 Introduction](#1-Introduction)
+* [2 Tools](#2-Tools)
+* [3 Installation](#3-Installation)
+* [4 Testing](#4-Testing)
+* [5 Usage](#5-Usage)
+* [6 Authors](#6-Authors)
+
+# ``1-Introduction``
+Team project to build a clone of [AirBnB](https://www.airbnb.com/).
+
+## AirBnB Clone Console
 
 Welcome to the AirBnB Clone Console! This is the first step towards building the AirBnB clone project, a full web application that mimics some functionalities of the popular accommodation rental platform, Airbnb.
+
+The console will perform the following tasks:
+
+* create a new object
+* retrive an object from a file
+* do operations on objects
+* destroy an object
 
 ## Overview
 
 The AirBnB Clone Console is a Python-based command-line interface (CLI) that allows you to manage AirBnB objects, such as users, states, cities, places, and more. With this console, you can perform various operations on these objects, including creating, retrieving, updating, and deleting them.
 
-## Getting Started
+## 2-Tools
+<!-- ubuntu -->
+<a href="https://ubuntu.com/" target="_blank"> <img height="" src="https://img.shields.io/static/v1?label=&message=Ubuntu&color=E95420&logo=Ubuntu&logoColor=E95420&labelColor=2F333A" alt="Suite CRM"></a> <!-- bash --> <a href="https://www.gnu.org/software/bash/" target="_blank"> <img height="" src="https://img.shields.io/static/v1?label=&message=GNU%20Bash&color=4EAA25&logo=GNU%20Bash&logoColor=4EAA25&labelColor=2F333A" alt="terminal"></a> <!-- python--> <a href="https://www.python.org" target="_blank"> <img height="" src="https://img.shields.io/static/v1?label=&message=Python&color=FFD43B&logo=python&logoColor=3776AB&labelColor=2F333A" alt="python"></a> </a><!-- vs code --> <a href="https://code.visualstudio.com/" target="_blank"> <img height="" src="https://img.shields.io/static/v1?label=&message=Visual%20Studio%20Code&color=5C2D91&logo=Visual%20Studio%20Code&logoColor=5C2D91&labelColor=2F333A" alt="Suite CRM"></a> </a><!-- git --> <a href="https://git-scm.com/" target="_blank"> <img height="" src="https://img.shields.io/static/v1?label=&message=Git&color=F05032&logo=Git&logoColor=F05032&labelColor=2F333A" alt="git distributed version control system"></a> <!-- github --> <a href="https://github.com" target="_blank"> <img height="" src="https://img.shields.io/static/v1?label=&message=GitHub&color=181717&logo=GitHub&logoColor=f2f2f2&labelColor=2F333A" alt="Github"></a>
+ <!-- Style guidelines -->
+* Style :
+    * [PEP8](https://pep8.org/)
 
-### Prerequisites
 
--   Python 3.8.5 or higher
-
-### Installation
-
+## ``3-Installation``
 1.  Clone this GitHub repository to your local machine.
 
-`git clone https://github.com/nuuxcode/AirBnB-Clone.git` 
+`git clone https://github.com/nuuxcode/AirBnB-Clone.git`
 
 2.  Navigate to the project directory.
 
@@ -25,63 +46,59 @@ The AirBnB Clone Console is a Python-based command-line interface (CLI) that all
 
 3.  Execute the console.
 
-`./console.py` 
+`./console.py`
 
-## Usage
+### Execution 
 
-The console provides a set of commands to interact with the AirBnB objects. Here are some of the available commands:
+Interactive mode
 
--   `help`: Display a list of documented commands and their descriptions.
--   `quit`: Exit the console.
-
-Please refer to the AirBnB concept page for more details on the supported objects and their functionalities.
-
-## Examples
-
-### Interactive Mode
-
-    $ ./console.py
-    (hbnb) help
+```
+$ ./console.py
+(hbnb) help
 
 Documented commands (type help <topic>):
 ========================================
-    EOF  help  quit
-    (hbnb)
-    (hbnb) quit
-    $
+EOF  help  quit
 
-### Non-Interactive Mode
-
-    $ echo "help" | ./console.py
-    (hbnb)
+(hbnb) 
+(hbnb) 
+(hbnb) quit
+$
+```
+Non Interactive mode
+```
+$ echo "help" | ./console.py
+(hbnb)
 
 Documented commands (type help <topic>):
 ========================================
-    EOF  help  quit
-    (hbnb)
+EOF  help  quit
+(hbnb) 
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
 
-## Running Tests
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
+```
 
-To ensure the proper functionality of the console, run the unit tests using the following command:
+## ``4-Usage``
 
-`python3 -m unittest discover tests` 
 
-## Learning Objectives
 
--   Understand how to create a Python package.
--   Build a command interpreter in Python using the `cmd` module.
--   Implement Unit testing in a large project.
--   Serialize and deserialize a class.
--   Read and write JSON files.
--   Handle datetime objects.
--   Use UUIDs for unique identifiers.
--   Utilize `*args` and `**kwargs` for handling variable arguments.
+## ``5-Testing``
 
-## Authors
+## ``6-Authors``
 
 -   [Soumia Ouzat](https://github.com/SouaOui)
 -   [Mounssif Bouhlaoui](https://github.com/nuuxcode)
 
-## License
+## ``7- License``
 
 This project is licensed under the MIT License - see the [LICENSE](https://chat.openai.com/LICENSE) file for details.
