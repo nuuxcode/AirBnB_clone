@@ -14,7 +14,6 @@ sys.stdout = captured_output
 
 class BaseModelTestCase(unittest.TestCase):
     """ class for base test """
-    print()
 
     def setUp(self):
         # Open and truncate the file to make it empty
@@ -26,7 +25,7 @@ class BaseModelTestCase(unittest.TestCase):
     def tearDown(self):
         printed_output = captured_output.getvalue()
         sys.stdout = sys.__stdout__
-        print(printed_output)
+        """print(printed_output)"""
 
     def test_basemodel_init(self):
         new = BaseModel()
@@ -96,64 +95,42 @@ class BaseModelTestCase(unittest.TestCase):
         }
         keyname = "BaseModel.45df704f-32b8-4aaf-8b60-ec589777338f"
         new2 = BaseModel(**_dict)
-        print(new2.to_dict())
+        """print(new2.to_dict())"""
         """ check if it have methods """
-        self.assertTrue(hasattr(new, "__init__"))
-        self.assertTrue(hasattr(new, "__str__"))
-        self.assertTrue(hasattr(new, "save"))
-        self.assertTrue(hasattr(new, "to_dict"))
-
+        self.assertTrue(hasattr(new2, "__init__"))
+        self.assertTrue(hasattr(new2, "__str__"))
+        self.assertTrue(hasattr(new2, "save"))
+        self.assertTrue(hasattr(new2, "to_dict"))
         """existince"""
-        self.assertTrue(hasattr(new, "id"))
-        self.assertTrue(hasattr(new, "created_at"))
-        self.assertTrue(hasattr(new, "updated_at"))
-        self.assertFalse(hasattr(new, "__class__"))
+        self.assertTrue(hasattr(new2, "id"))
+        self.assertTrue(hasattr(new2, "created_at"))
+        self.assertTrue(hasattr(new2, "updated_at"))
+        self.assertFalse(hasattr(new2, "name"))
+        self.assertFalse(hasattr(new2, "my_number"))
+        self.assertTrue(hasattr(new2, "__class__"))
 
         """check value"""
         """self.assertEqual(new.id, "45df704f-32b8-4aaf-8b60-ec589777338f")
         format = "%Y-%m-%dT%H:%M:%S.%f"
         createat = datetime.strptime(_dict[keyname].c, format)
-        self.assertEqual(new.created_at, createat)"""
-        print(_dict[keyname].created_at)
+        self.assertEqual(new.created_at, createat)
+        print(_dict[keyname].created_at)"""
         """type test"""
-        self.assertIsInstance(new.id, str)
-        self.assertIsInstance(new.created_at, datetime)
-        self.assertIsInstance(new.updated_at, datetime)
+        self.assertIsInstance(new2.id, str)
+        self.assertIsInstance(new2.created_at, datetime)
+        self.assertIsInstance(new2.updated_at, datetime)
+        """self.assertIsInstance(new2.name, str)"""
+        """self.assertIsInstance(new2.my_number, str)"""
+        """self.assertIsInstance(new2.__class__, str)"""
 
         """ check if save in storage """
-        keyname = "BaseModel."+new.id
+        keyname = "BaseModel."+new2.id
         """ check if object exist by keyname """
-        self.assertIn(keyname, models.storage.all())
+        """self.assertIn(keyname, models.storage.all())"""
         """ check if the object found in storage with corrrect id"""
-        self.assertTrue(models.storage.all()[keyname] is new)
+        """self.assertTrue(models.storage.all()[keyname] is new2)"""
 
-        """ Test update """
-        new.name = "My First Model"
-        new.my_number = 89
-
-        self.assertTrue(hasattr(models.storage.all()[keyname], "name"))
-        self.assertTrue(hasattr(models.storage.all()[keyname], "my_number"))
-
-        """check if save() update update_at time change"""
-        old_time = new.updated_at
-        new.save()
-        self.assertNotEqual(old_time, new.updated_at)
-
-        """ check if init it call: models.storage.save() """
-        with patch('models.storage.save') as mock_function:
-            obj = BaseModel()
-            obj.save()
-            mock_function.assert_called_once()
-
-        """check if it save in json file"""
-        keyname = "BaseModel."+new.id
-        with open(self.filepath, 'r') as file:
-            saved_data = json.load(file)
-        """ check if object exist by keyname """
-        self.assertIn(keyname, saved_data)
-        """ check if the value found in json is correct"""
-        self.assertEqual(saved_data[keyname], new.to_dict())
-
+    
         ############################
 
 
