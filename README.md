@@ -1,4 +1,6 @@
-# 0x00. AirBnB clone - The console
+# AirBnB clone - The console
+
+Welcome to the AirBnB Clone Console! This is the first step towards building the AirBnB clone project, a full web application that mimics some functionalities of the popular accommodation rental platform, Airbnb.
 
 ## Contents:
 
@@ -13,9 +15,9 @@
 # ``1-Introduction``
 Team project to build a clone of [AirBnB](https://www.airbnb.com/).
 
-## AirBnB Clone Console
+## Overview
 
-Welcome to the AirBnB Clone Console! This is the first step towards building the AirBnB clone project, a full web application that mimics some functionalities of the popular accommodation rental platform, Airbnb.
+The AirBnB Clone Console is a Python-based command-line interface (CLI) that allows you to manage AirBnB objects, such as users, states, cities, places, and more. With this console, you can perform various operations on these objects, including creating, retrieving, updating, and deleting them.
 
 The console will perform the following tasks:
 
@@ -24,9 +26,7 @@ The console will perform the following tasks:
 * do operations on objects
 * destroy an object
 
-## Overview
 
-The AirBnB Clone Console is a Python-based command-line interface (CLI) that allows you to manage AirBnB objects, such as users, states, cities, places, and more. With this console, you can perform various operations on these objects, including creating, retrieving, updating, and deleting them.
 
 ## ``2-Tools``
 <!-- ubuntu -->
