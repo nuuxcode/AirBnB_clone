@@ -14,7 +14,6 @@ sys.stdout = captured_output
 
 class BaseModelTestCase(unittest.TestCase):
     """ class for base test """
-    print()
 
     def setUp(self):
         # Open and truncate the file to make it empty
@@ -26,7 +25,6 @@ class BaseModelTestCase(unittest.TestCase):
     def tearDown(self):
         printed_output = captured_output.getvalue()
         sys.stdout = sys.__stdout__
-        print(printed_output)
 
     def test_basemodel_init(self):
         new = BaseModel()
@@ -96,7 +94,6 @@ class BaseModelTestCase(unittest.TestCase):
         }
         keyname = "BaseModel.45df704f-32b8-4aaf-8b60-ec589777338f"
         new2 = BaseModel(**_dict)
-        print(new2.to_dict())
         """ check if it have methods """
         self.assertTrue(hasattr(new, "__init__"))
         self.assertTrue(hasattr(new, "__str__"))
@@ -114,7 +111,6 @@ class BaseModelTestCase(unittest.TestCase):
         format = "%Y-%m-%dT%H:%M:%S.%f"
         createat = datetime.strptime(_dict[keyname].c, format)
         self.assertEqual(new.created_at, createat)"""
-        print(_dict[keyname].created_at)
         """type test"""
         self.assertIsInstance(new.id, str)
         self.assertIsInstance(new.created_at, datetime)
