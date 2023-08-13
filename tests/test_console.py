@@ -26,7 +26,6 @@ class ConsoleTestCase(unittest.TestCase):
 
     def test_error(self):
         """DOC DOC"""
-        print("")
         cmd_classname = ["create", "update", "show", "destroy"]
         cmd_id = ["update", "show", "destroy"]
         cmd_attr = ["update"]
