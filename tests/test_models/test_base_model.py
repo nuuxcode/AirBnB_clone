@@ -83,21 +83,19 @@ class BaseModelTestCase(unittest.TestCase):
 
     def test_basemodel_init2(self):
         _dict = {
-            "BaseModel.45df704f-32b8-4aaf-8b60-ec589777338f": {
-                "id": "45df704f-32b8-4aaf-8b60-ec589777338f",
-                "created_at": "2023-08-11T20:15:11.070879",
-                "updated_at": "2023-08-11T20:15:11.070914",
-                "name": "My First Model",
-                "my_number": 89,
-                "__class__": "BaseModel"
-            }
+            "id": "45df704f-32b8-4aaf-8b60-ec589777338f",
+            "created_at": "2023-08-11T20:15:11.070879",
+            "updated_at": "2023-08-11T20:15:11.070914",
+            "name": "My First Model",
+            "my_number": 89,
+            "__class__": "BaseModel"
         }
+
         keyname = "BaseModel.45df704f-32b8-4aaf-8b60-ec589777338f"
         new2 = BaseModel(**_dict)
- 
+
         """existince"""
-      
-        self.assertTrue(hasattr(new2, "__class__"))
+        self.assertFalse("__class__" in new2.__dict__)
 
         ############################
 
