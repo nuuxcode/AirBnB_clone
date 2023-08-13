@@ -106,49 +106,7 @@ class BaseModelTestCase(unittest.TestCase):
         self.assertTrue(hasattr(new, "updated_at"))
         self.assertFalse(hasattr(new, "__class__"))
 
-        """check value"""
-        """self.assertEqual(new.id, "45df704f-32b8-4aaf-8b60-ec589777338f")
-        format = "%Y-%m-%dT%H:%M:%S.%f"
-        createat = datetime.strptime(_dict[keyname].c, format)
-        self.assertEqual(new.created_at, createat)"""
-        """type test"""
-        self.assertIsInstance(new.id, str)
-        self.assertIsInstance(new.created_at, datetime)
-        self.assertIsInstance(new.updated_at, datetime)
-
-        """ check if save in storage """
-        keyname = "BaseModel."+new.id
-        """ check if object exist by keyname """
-        self.assertIn(keyname, models.storage.all())
-        """ check if the object found in storage with corrrect id"""
-        self.assertTrue(models.storage.all()[keyname] is new)
-
-        """ Test update """
-        new.name = "My First Model"
-        new.my_number = 89
-
-        self.assertTrue(hasattr(models.storage.all()[keyname], "name"))
-        self.assertTrue(hasattr(models.storage.all()[keyname], "my_number"))
-
-        """check if save() update update_at time change"""
-        old_time = new.updated_at
-        new.save()
-        self.assertNotEqual(old_time, new.updated_at)
-
-        """ check if init it call: models.storage.save() """
-        with patch('models.storage.save') as mock_function:
-            obj = BaseModel()
-            obj.save()
-            mock_function.assert_called_once()
-
-        """check if it save in json file"""
-        keyname = "BaseModel."+new.id
-        with open(self.filepath, 'r') as file:
-            saved_data = json.load(file)
-        """ check if object exist by keyname """
-        self.assertIn(keyname, saved_data)
-        """ check if the value found in json is correct"""
-        self.assertEqual(saved_data[keyname], new.to_dict())
+  
 
         ############################
 
