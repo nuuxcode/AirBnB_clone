@@ -85,7 +85,7 @@ class BaseModelTestCase(unittest.TestCase):
 
     def test_basemodel_init2(self):
         """ class for base test """
-       
+
         new = BaseModel()
         new.name = "John"
         new.my_number = 89
@@ -94,6 +94,7 @@ class BaseModelTestCase(unittest.TestCase):
         self.assertEqual(new.name, "John")
         self.assertEqual(new.my_number, 89)
         self.assertEqual(new.to_dict(), new2.to_dict())
+
     def test_basemodel_init3(self):
         """ DOC DOC DOC """
         new = BaseModel()
@@ -103,6 +104,14 @@ class BaseModelTestCase(unittest.TestCase):
         self.assertTrue(isinstance(new2.created_at, datetime))
         self.assertTrue(isinstance(new2.updated_at, datetime))
 
+        new = BaseModel()
+
+        self.assertEqual(
+            str(new),  "[BaseModel] ({}) {}".format(new.id, new.__dict__))
+
+        old_time = new.updated_at
+        new.save()
+        self.assertGreater(new.updated_at, old_time)
 
 
 if __name__ == '__main__':
