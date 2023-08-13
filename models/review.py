@@ -3,6 +3,7 @@ from models.base_model import BaseModel
 
 
 class Review(BaseModel):
+    """ DOC DOC DOC """
     place_id = ""
     user_id = ""
     text = ""

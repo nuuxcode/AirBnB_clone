@@ -12,6 +12,7 @@ class FileStorageTestCase(unittest.TestCase):
     """ class for base test """
 
     def test_FileStorage_init(self):
+        """ DOC DOC DOC """
         filepath = models.storage._FileStorage__file_path
         _objs = models.storage._FileStorage__objects
         """check class attr"""

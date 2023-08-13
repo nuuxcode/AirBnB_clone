@@ -16,17 +16,19 @@ class BaseModelTestCase(unittest.TestCase):
     """ class for base test """
 
     def setUp(self):
-        # Open and truncate the file to make it empty
+        """ class for base test """
         self.filepath = models.storage._FileStorage__file_path
         with open(self.filepath, 'w') as file:
             file.truncate(0)
         models.storage.all().clear()
 
     def tearDown(self):
+        """ class for base test """
         printed_output = captured_output.getvalue()
         sys.stdout = sys.__stdout__
 
     def test_basemodel_init(self):
+        """ class for base test """
         new = BaseModel()
 
         """ check if it have methods """
@@ -82,22 +84,34 @@ class BaseModelTestCase(unittest.TestCase):
         self.assertEqual(saved_data[keyname], new.to_dict())
 
     def test_basemodel_init2(self):
-        _dict = {
-            "id": "45df704f-32b8-4aaf-8b60-ec589777338f",
-            "created_at": "2023-08-11T20:15:11.070879",
-            "updated_at": "2023-08-11T20:15:11.070914",
-            "name": "My First Model",
-            "my_number": 89,
-            "__class__": "BaseModel"
-        }
+        """ class for base test """
 
-        keyname = "BaseModel.45df704f-32b8-4aaf-8b60-ec589777338f"
-        new = BaseModel(**_dict)
+        new = BaseModel()
+        new.name = "John"
+        new.my_number = 89
+        new2 = BaseModel(**new.to_dict())
+        self.assertEqual(new.id, new2.id)
+        self.assertEqual(new.name, "John")
+        self.assertEqual(new.my_number, 89)
+        self.assertEqual(new.to_dict(), new2.to_dict())
 
-        
-        self.assertFalse(hasattr(new, "__class__"))
+    def test_basemodel_init3(self):
+        """ DOC DOC DOC """
+        new = BaseModel()
+        new2 = BaseModel(new.to_dict())
+        self.assertNotEqual(new, new2)
+        self.assertNotEqual(new.id, new2.id)
+        self.assertTrue(isinstance(new2.created_at, datetime))
+        self.assertTrue(isinstance(new2.updated_at, datetime))
 
-        ############################
+        new = BaseModel()
+
+        self.assertEqual(
+            str(new),  "[BaseModel] ({}) {}".format(new.id, new.__dict__))
+
+        old_time = new.updated_at
+        new.save()
+        self.assertGreater(new.updated_at, old_time)
 
 
 if __name__ == '__main__':

@@ -14,6 +14,7 @@ import json
 
 
 class HBNBCommand(cmd.Cmd):
+    """DOC DOC"""
     prompt = "(hbnb) "
 
     all_class = ["BaseModel", "User", "State",
@@ -39,6 +40,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
+        """DOC DOC"""
         classes = {
             "BaseModel": BaseModel,
             "User": User,
@@ -56,11 +58,13 @@ class HBNBCommand(cmd.Cmd):
             print(new.id)
 
     def do_clear(self, arg):
+        """DOC DOC"""
         storage.all().clear()
         self.do_all(arg)
         print("** All data been clear! **")
 
     def valid(self, arg, _id_flag=False, _att_flag=False):
+        """DOC DOC"""
         args = arg.split()
         _len = len(arg.split())
         if _len == 0:
@@ -84,12 +88,14 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_show(self, arg):
+        """DOC DOC"""
         if self.valid(arg, True):
             args = arg.split()
             _key = args[0]+"."+args[1]
             print(storage.all()[_key])
 
     def do_destroy(self, arg):
+        """DOC DOC"""
         if self.valid(arg, True):
             args = arg.split()
             _key = args[0]+"."+args[1]
@@ -116,6 +122,7 @@ class HBNBCommand(cmd.Cmd):
         print(my_list)
 
     def casting(self, arg):
+        """DOC DOC"""
         try:
             if "." in arg:
                 arg = float(arg)
@@ -149,6 +156,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def count(self, arg):
+        """DOC DOC"""
         count = 0
         for key in storage.all():
             if arg[:-1] in key:
@@ -156,6 +164,7 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def _exec(self, arg):
+        """DOC DOC"""
         methods = {
             "all": self.do_all,
             "count": self.count,
@@ -175,6 +184,7 @@ class HBNBCommand(cmd.Cmd):
             methods[match[0][1]](args)
 
     def default(self, arg):
+        """DOC DOC"""
         match = re.findall(r"^(\w+)\.(\w+)\((.*)\)", arg)
         if len(match) != 0 and match[0][1] == "update" and "{" in arg:
             _dict = re.search(r'{([^}]+)}', arg).group()
