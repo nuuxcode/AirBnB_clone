@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-clear
-echo "{}" > file.json
