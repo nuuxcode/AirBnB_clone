@@ -93,12 +93,16 @@ class BaseModelTestCase(unittest.TestCase):
         self.assertEqual(new.id, new2.id)
         self.assertEqual(new.name, "John")
         self.assertEqual(new.my_number, 89)
-
+        self.assertEqual(new.to_dict(), new2.to_dict())
     def test_basemodel_init3(self):
         """ DOC DOC DOC """
         new = BaseModel()
         new2 = BaseModel(new.to_dict())
         self.assertNotEqual(new, new2)
+        self.assertNotEqual(new.id, new2.id)
+        self.assertTrue(isinstance(new2.created_at, datetime))
+        self.assertTrue(isinstance(new2.updated_at, datetime))
+
 
 
 if __name__ == '__main__':
