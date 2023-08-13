@@ -82,20 +82,10 @@ class BaseModelTestCase(unittest.TestCase):
         self.assertEqual(saved_data[keyname], new.to_dict())
 
     def test_basemodel_init2(self):
-        _dict = {
-            "id": "45df704f-32b8-4aaf-8b60-ec589777338f",
-            "created_at": "2023-08-11T20:15:11.070879",
-            "updated_at": "2023-08-11T20:15:11.070914",
-            "name": "My First Model",
-            "my_number": 89,
-            "__class__": "BaseModel"
-        }
-
-        keyname = "BaseModel.45df704f-32b8-4aaf-8b60-ec589777338f"
-        new = BaseModel(**_dict)
-
-        
-        self.assertFalse(hasattr(new, "__class__"))
+       
+        new = BaseModel()
+        new2 = BaseModel(**new.to_dict())
+        self.assertEqual(new.id, new2.id)
 
         ############################
 
