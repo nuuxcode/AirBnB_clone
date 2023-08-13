@@ -94,12 +94,11 @@ class BaseModelTestCase(unittest.TestCase):
         }
         keyname = "BaseModel.45df704f-32b8-4aaf-8b60-ec589777338f"
         new2 = BaseModel(**_dict)
-        """ check if it have methods """
-        self.assertTrue(hasattr(new2, "__init__"))
-        self.assertTrue(hasattr(new2, "__str__"))
-        self.assertTrue(hasattr(new2, "save"))
-        self.assertTrue(hasattr(new2, "to_dict"))
-
+ 
+        """existince"""
+        self.assertTrue(hasattr(new2, "id"))
+        self.assertTrue(hasattr(new2, "created_at"))
+        self.assertTrue(hasattr(new2, "updated_at"))
 
         ############################
 
