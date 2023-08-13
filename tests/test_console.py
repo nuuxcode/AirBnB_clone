@@ -43,7 +43,8 @@ class ConsoleTestCase(unittest.TestCase):
 
         """ class doesn't exist """
         print("----------------------------")
-        class_dont_exist = ["create x", "update x", "show x", "destroy x", "all x"]
+        class_dont_exist = ["create x", "update x",
+                            "show x", "destroy x", "all x"]
         for cmd in class_dont_exist:
             # print(f"class doesn't exist : {cmd}")
             with patch('sys.stdout', new=StringIO()) as f:
@@ -139,5 +140,8 @@ class ConsoleTestCase(unittest.TestCase):
 
 # python3 -m unittest -v tests/test_console.py
 # echo "python3 -m unittest -v tests/test_console.py " | bash
-    all_class = ["BaseModel", "User", "State",
-                 "City", "Amenity", "Place", "Review"]
+#   all_class = ["BaseModel", "User", "State",
+# "City", "Amenity", "Place", "Review"]
+
+if __name__ == '__main__':
+    unittest.main()
