@@ -130,7 +130,6 @@ class BaseModelTestCase(unittest.TestCase):
         """ check if the object found in storage with corrrect id"""
         """self.assertTrue(models.storage.all()[keyname] is new2)"""
 
-    
         ############################
 
 

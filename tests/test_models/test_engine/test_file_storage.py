@@ -7,6 +7,7 @@ import models
 import json
 import os
 
+
 class FileStorageTestCase(unittest.TestCase):
     """ class for base test """
 
@@ -23,14 +24,14 @@ class FileStorageTestCase(unittest.TestCase):
         self.assertTrue(hasattr(new, "__str__"))
         self.assertTrue(hasattr(new, "save"))
         self.assertTrue(hasattr(new, "to_dict"))
-        
+
         """test all"""
         self.assertIsInstance(models.storage.all(), dict)
         self.assertNotEqual(models.storage.all(), {})
         """existence id"""
         self.assertTrue(hasattr(new, "id"))
         self.assertIsInstance(new.id, str)
-        
+
         """new"""
         keyname = "BaseModel."+new.id
         self.assertIsInstance(models.storage.all()[keyname], BaseModel)
@@ -39,7 +40,7 @@ class FileStorageTestCase(unittest.TestCase):
         self.assertIn(keyname, models.storage.all())
         """ check if the object found in storage with corrrect id"""
         self.assertTrue(models.storage.all()[keyname] is new)
-        
+
         """save"""
         models.storage.save()
         with open(filepath, 'r') as file:
@@ -54,13 +55,15 @@ class FileStorageTestCase(unittest.TestCase):
         models.storage.reload()
         with open(filepath, 'r') as file:
             saved_data = json.load(file)
-        self.assertEqual(saved_data[keyname], models.storage.all()[keyname].to_dict())
-        
+        self.assertEqual(saved_data[keyname],
+                         models.storage.all()[keyname].to_dict())
+
         """file"""
         if os.path.exists(filepath):
             os.remove(filepath)
-        self.assertFalse(os.path.exists(filepath)) 
-        models.storage.reload()   
+        self.assertFalse(os.path.exists(filepath))
+        models.storage.reload()
+
 
 if __name__ == '__main__':
     unittest.main()
