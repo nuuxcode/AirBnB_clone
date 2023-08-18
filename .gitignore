@@ -8,6 +8,8 @@ __pycache__/
 !.gitignore
 !AUTHORS
 !web_static/
+!web_static/images
+!web_static/styles
 !*.html
 !*.css
 !*.png
