@@ -7,3 +7,7 @@ __pycache__/
 !*.md
 !.gitignore
 !AUTHORS
+!web_static/
+!*.html
+!*.css
+!*.png
