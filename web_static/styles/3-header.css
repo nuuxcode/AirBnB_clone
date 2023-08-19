@@ -5,9 +5,6 @@ header {
 
     color: white;
     border-bottom: 1px solid #CCCCCC;
-
-    display: flex;
-    align-items: center;
 }
 
 header .logo {
