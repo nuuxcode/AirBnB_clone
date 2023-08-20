@@ -31,9 +31,8 @@
 .filters .amenities {
     height: 100%;
     width: 25%;
-    padding-left: 50px;
+    margin-left: 50px;
     cursor: pointer;
-    position: relative;
 }
 
 .filters .locations {
@@ -51,31 +50,30 @@
     margin-top: 0px;
 }
 
-
 .filters .popover {
-    background-color: #FAFAFA;
     display: none;
+    background-color: #FAFAFA;
+    margin-left: -50px;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    margin-left: -50px;
     list-style-type: none;
-    padding-left: 25px;
     padding-top: 20px;
     padding-bottom: 20px;
-    z-index: 999;
+    z-index: 10;
+    position: relative;
 }
 
 .filters h2 {
     margin: 0px;
     font-size: 16px;
+    margin-left: -13px;
 }
 
-.filters h2:nth-child(4) {
+.filters .locations li:nth-child(4) {
     margin-top: 20px;
 }
 
 .filters li {
-    padding-left: 20px;
     cursor: pointer;
 }
 
